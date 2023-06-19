@@ -11,11 +11,20 @@ public:
 	//Methods I am not sure if I should implement here:
 	void SYS_addr();
 	void CLS();
+	void DRW_Vx_Vy();
+	void SKP_Vx();
+	void SKNP_Vx();
+	void LD_Vx_K();
+	void LD_F_Vx();
+	void LD_B_Vx();  // Memory class should be implemented first
+	void LD_I_Vx();
+	void LD_Vx_I();
+
 
 	//Methods
 	void RET();
 	void JP_addr(uint16_t location);
-	void CALL_addr();
+	void CALL_addr(uint16_t instruction);
 	void SE_Vx_byte(unsigned char regIndex, uint8_t kk);
 	void SNE_Vx_byte(unsigned char regIndex, uint8_t kk);
 	void SE_Vx_Vy(unsigned char regIndex, unsigned char regIndexJ);
@@ -29,7 +38,16 @@ public:
 	void SUB_Vx_Vy(unsigned char regIndex, unsigned char regIndexJ);
 	void SHR_Vx(unsigned char regIndex);
 	void SUBN_Vx_Vy(unsigned char regIndex, unsigned char regIndexJ);
-
+	void SHL_Vx(unsigned char regIndex);
+	void SNE_Vx_Vy(unsigned char regIndex, unsigned char regIndexJ);
+	void LD_I_addr(uint16_t instruction);
+	void JP_V0_addr(uint16_t instruction);
+	void RND_Vx_byte(unsigned char regIndex, uint8_t kk);
+	void LD_Vx_DT(unsigned char regIndex);
+	void LD_DT_Vx(unsigned char regIndex);
+	void LD_DT_Vx(unsigned char regIndex);
+	void LD_ST_Vx(unsigned char regIndex);
+	void ADD_I_Vx(unsigned char regIndex);
 
 
 private:

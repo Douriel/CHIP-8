@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClCompile Include="Chip-8.cpp" />
     <ClCompile Include="CPU.cpp" />
+    <ClCompile Include="Memory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
     <ClInclude Include="CPU.h" />
     <ClInclude Include="Instructions.h" />
+    <ClInclude Include="Memory.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
