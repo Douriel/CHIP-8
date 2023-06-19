@@ -19,6 +19,7 @@ public:
 	void LD_B_Vx();  // Memory class should be implemented first
 	void LD_I_Vx();
 	void LD_Vx_I();
+	void DRW_Vx_Vy_nibble();
 
 
 	//Methods

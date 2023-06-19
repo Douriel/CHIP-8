@@ -121,3 +121,7 @@ std::uint8_t Memory::read(std::uint16_t I)
 {
 	return RAM[I];
 }
+
+std::uint8_t* Memory::getRAM() {
+	return RAM;
+}
