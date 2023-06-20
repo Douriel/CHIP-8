@@ -1,5 +1,6 @@
 #pragma once
 #include "Common.h"
+#include "Memory.h"
 
 class CPU
 {
@@ -7,20 +8,19 @@ public:
 	//Constructor and desctructor
 	CPU();
 	~CPU();
+	void incPC() { PC += 2; }
 
 	//Methods I am not sure if I should implement here:
 	void SYS_addr();
 	void CLS();
-	void DRW_Vx_Vy();
+	void DRW_Vx_Vy_nibble();
 	void SKP_Vx();
 	void SKNP_Vx();
 	void LD_Vx_K();
-	void LD_F_Vx();
+	
 	void LD_B_Vx();  // Memory class should be implemented first
 	void LD_I_Vx();
 	void LD_Vx_I();
-	void DRW_Vx_Vy_nibble();
-
 
 	//Methods
 	void RET();
@@ -49,7 +49,7 @@ public:
 	void LD_DT_Vx(unsigned char regIndex);
 	void LD_ST_Vx(unsigned char regIndex);
 	void ADD_I_Vx(unsigned char regIndex);
-
+	void LD_F_Vx(unsigned char regIndex);
 
 private:
 	std::uint16_t PC = 512;
@@ -59,7 +59,7 @@ private:
 	std::uint8_t SP = 0;
 	std::uint16_t stack[16];
 
-
+	Memory memory;
 
 	// Sound and delay timer
 	std::uint16_t DT;

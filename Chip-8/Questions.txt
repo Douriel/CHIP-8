@@ -1,0 +1,13 @@
+1.On CPU class,there is some instructions which involve I register. For instance:
+
+Fx1E - ADD I, Vx
+Set I = I + Vx.
+
+The values of I and Vx are added, and the results are stored in I.
+
+Does it mean this value should be stored in RAM[I]
+
+I guess no.
+
+
+2.
