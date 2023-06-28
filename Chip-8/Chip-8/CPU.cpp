@@ -152,3 +152,16 @@ void CPU::LD_F_Vx(unsigned char regIndex)
 	I = 5 * Vx[regIndex];
 	incPC();
 }
+
+void CPU::LD_B_Vx(unsigned char regIndex)
+{
+	uint8_t value = Vx[regIndex];
+
+	uint8_t hundreds = value / 100;
+	uint8_t decimals = (value % 100) / 10;
+	uint8_t ones = (value % 10);
+
+	memory.write(I, hundreds);
+	memory.write(I, decimals);
+	memory.write(I, ones);
+	}
