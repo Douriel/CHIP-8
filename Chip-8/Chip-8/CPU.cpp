@@ -1,5 +1,14 @@
 #include "CPU.h"
 
+
+
+void CPU::LD_Vx_I()
+{
+	for (int i = 0; i <= x; i++) {
+		Vx[i] = memory.read(I + 1);
+	}
+}
+
 void CPU::RET() {
 	PC = stack[SP];
 	SP--;
@@ -165,3 +174,10 @@ void CPU::LD_B_Vx(unsigned char regIndex)
 	memory.write(I, decimals);
 	memory.write(I, ones);
 	}
+
+void CPU::LD_I_Vx()
+{
+	for (int i = 0; i < 16; i++) {
+		memory.write(I, Vx[i]);
+	}
+}

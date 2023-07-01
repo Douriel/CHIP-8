@@ -18,8 +18,8 @@ public:
 	void SKNP_Vx();
 	void LD_Vx_K();
 	
-	void LD_I_Vx(); // Memory class should be implemented first
-	void LD_Vx_I();
+ // Memory class should be implemented first
+	
 
 	//Methods
 	void RET();
@@ -50,7 +50,8 @@ public:
 	void ADD_I_Vx(unsigned char regIndex);
 	void LD_F_Vx(unsigned char regIndex);
 	void LD_B_Vx(unsigned char regIndex);  
-
+	void LD_I_Vx();
+	void LD_Vx_I();
 
 private:
 	std::uint16_t PC = 512;
