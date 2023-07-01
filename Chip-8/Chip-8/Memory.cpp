@@ -113,13 +113,13 @@ Memory::Memory() {
 	RAM[idx++] = 0x80;
 }
 
-void Memory::write(std::uint16_t I, std::uint8_t value) {
-	RAM[I] = value;
+void Memory::write(std::uint16_t address, std::uint8_t value) {
+	RAM[address] = value;
 }
 
-std::uint8_t Memory::read(std::uint16_t I)
+std::uint8_t Memory::read(std::uint16_t address)
 {
-	return RAM[I];
+	return RAM[address];
 }
 
 std::uint8_t* Memory::getRAM() {

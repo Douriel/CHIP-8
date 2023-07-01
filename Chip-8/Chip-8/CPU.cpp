@@ -2,12 +2,7 @@
 
 
 
-void CPU::LD_Vx_I()
-{
-	for (int i = 0; i <= x; i++) {
-		Vx[i] = memory.read(I + 1);
-	}
-}
+
 
 void CPU::RET() {
 	PC = stack[SP];
@@ -171,13 +166,24 @@ void CPU::LD_B_Vx(unsigned char regIndex)
 	uint8_t ones = (value % 10);
 
 	memory.write(I, hundreds);
-	memory.write(I, decimals);
-	memory.write(I, ones);
-	}
+	memory.write(I+1, decimals);
+	memory.write(I+2, ones);
 
-void CPU::LD_I_Vx()
+	incPC();
+}
+
+void CPU::LD_I_Vx(unsigned char regIndex)
 {
-	for (int i = 0; i < 16; i++) {
+	for (int i = 0; i < regIndex; i++) {
 		memory.write(I, Vx[i]);
 	}
+	incPC();
+}
+
+void CPU::LD_Vx_I(unsigned char regIndex)
+{
+	for (int i = 0; i <= regIndex; i++) {
+		Vx[i] = memory.read(I + 1);
+	}
+	incPC();
 }

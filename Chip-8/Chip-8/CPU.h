@@ -1,6 +1,7 @@
 #pragma once
 #include "Common.h"
 #include "Memory.h"
+#include "SDL.h"
 
 class CPU
 {
@@ -17,8 +18,6 @@ public:
 	void SKP_Vx();
 	void SKNP_Vx();
 	void LD_Vx_K();
-	
- // Memory class should be implemented first
 	
 
 	//Methods
@@ -50,8 +49,8 @@ public:
 	void ADD_I_Vx(unsigned char regIndex);
 	void LD_F_Vx(unsigned char regIndex);
 	void LD_B_Vx(unsigned char regIndex);  
-	void LD_I_Vx();
-	void LD_Vx_I();
+	void LD_I_Vx(unsigned char regIndex);
+	void LD_Vx_I(unsigned char regIndex);
 
 private:
 	std::uint16_t PC = 512;

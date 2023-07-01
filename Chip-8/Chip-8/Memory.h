@@ -6,8 +6,8 @@ public:
 	Memory();
 	~Memory();
 
-	void write(std::uint16_t I, std::uint8_t value);
-	std::uint8_t read(std::uint16_t I);
+	void write(std::uint16_t address, std::uint8_t value);
+	std::uint8_t read(std::uint16_t address);
 	std::uint8_t* getRAM();
 
 private:
