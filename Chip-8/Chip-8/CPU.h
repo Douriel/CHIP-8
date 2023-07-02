@@ -7,7 +7,7 @@ class CPU
 {
 public:
 	//Constructor and desctructor
-	CPU();
+	CPU(Memory *memory);
 	~CPU();
 	void incPC() { PC += 2; }
 
@@ -60,7 +60,7 @@ private:
 	std::uint8_t SP = 0;
 	std::uint16_t stack[16];
 
-	Memory memory;
+	Memory* m_memory;
 
 	// Sound and delay timer
 	std::uint16_t DT;

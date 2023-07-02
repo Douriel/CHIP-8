@@ -1,7 +1,9 @@
 #include "CPU.h"
 
 
-
+CPU::CPU(Memory* memory) {
+	m_memory = memory;
+}
 
 
 void CPU::RET() {
@@ -165,9 +167,10 @@ void CPU::LD_B_Vx(unsigned char regIndex)
 	uint8_t decimals = (value % 100) / 10;
 	uint8_t ones = (value % 10);
 
-	memory.write(I, hundreds);
-	memory.write(I+1, decimals);
-	memory.write(I+2, ones);
+
+	m_memory->write(I, hundreds);
+	m_memory->write(I+1, decimals);
+	m_memory->write(I+2, ones);
 
 	incPC();
 }
@@ -175,7 +178,7 @@ void CPU::LD_B_Vx(unsigned char regIndex)
 void CPU::LD_I_Vx(unsigned char regIndex)
 {
 	for (int i = 0; i < regIndex; i++) {
-		memory.write(I, Vx[i]);
+		m_memory->write(I, Vx[i]);
 	}
 	incPC();
 }
@@ -183,7 +186,7 @@ void CPU::LD_I_Vx(unsigned char regIndex)
 void CPU::LD_Vx_I(unsigned char regIndex)
 {
 	for (int i = 0; i <= regIndex; i++) {
-		Vx[i] = memory.read(I + 1);
+		Vx[i] = m_memory->read(I + 1);
 	}
 	incPC();
 }
