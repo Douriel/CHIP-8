@@ -47,3 +47,26 @@ void Renderer::stop()
 	// close SDL
 	SDL_Quit();
 }
+
+void Renderer::update()
+{
+	for (int i = 0; i < 64; i++) {
+		for (int j = 0; j < 32; j++) {
+			cout << +m_pixels[j + i * 32];
+		}
+		cout << "\n";
+	}
+
+	unsigned char pixels_rgb[64 * 32 * 3];
+
+	int idx = 0;
+	for (int i = 0; i < (64 * 32); i++) {
+		unsigned char aux = m_pixels[i];
+		pixels_rgb[idx] = aux * 0xFF;
+		pixels_rgb[idx + 1] = aux * 0xFF;
+		pixels_rgb[idx + 2] = aux * 0xFF;
+
+		idx += 3;
+	}
+	SDL_UpdateTexture(m_sdlTexture, NULL, pixels_rgb, 64 * 3 * sizeof(unsigned char));
+}
