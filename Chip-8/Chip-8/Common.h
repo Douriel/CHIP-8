@@ -5,6 +5,12 @@
 #include "SDL.h"
 #include <string>
 
+
+#include <fstream>
+#include <iterator>
+#include <algorithm>
+
+
 using namespace std;
 
 std::random_device rd;

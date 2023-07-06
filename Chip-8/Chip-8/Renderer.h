@@ -8,7 +8,7 @@ class Renderer
 public:
 	Renderer();
 	~Renderer();
-	bool init(const char* windowName, int width, int height);
+	bool init(string windowName, int width, int height);
 	void update();
 	void render();
 	void clear();

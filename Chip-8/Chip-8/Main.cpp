@@ -2,11 +2,14 @@
 //
 
 #include <iostream>
+#include "Chip8.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
+    Chip8 m_chip8;
 
+    m_chip8.init("Luis", 100, 100);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

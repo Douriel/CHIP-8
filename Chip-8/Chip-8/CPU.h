@@ -11,6 +11,8 @@ public:
 	~CPU();
 	void incPC() { PC += 2; }
 
+	uint16_t getPC();
+
 	//Methods I am not sure if I should implement here:
 	void SYS_addr();
 	void CLS();
@@ -44,7 +46,7 @@ public:
 	void RND_Vx_byte(unsigned char regIndex, uint8_t kk);
 	void LD_Vx_DT(unsigned char regIndex);
 	void LD_DT_Vx(unsigned char regIndex);
-	void LD_DT_Vx(unsigned char regIndex);
+//	void LD_DT_Vx(unsigned char regIndex);
 	void LD_ST_Vx(unsigned char regIndex);
 	void ADD_I_Vx(unsigned char regIndex);
 	void LD_F_Vx(unsigned char regIndex);

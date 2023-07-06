@@ -9,7 +9,7 @@ public:
 	Chip8();
 	~Chip8();
 
-	void init(const char* gameName, int width, int height);
+	void init(string gameName, int width, int height);
 	void decodeNext();
 	void update();
 
@@ -19,7 +19,7 @@ private:
 	unsigned char getVx(uint16_t inst);
 	unsigned char getVy(uint16_t inst);
 
-	CPU* m_cpu;
+	CPU		   *m_cpu;
 	Memory		m_memory;
 	Renderer	m_renderer;
 };

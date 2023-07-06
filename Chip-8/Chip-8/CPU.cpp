@@ -5,6 +5,9 @@ CPU::CPU(Memory* memory) {
 	m_memory = memory;
 }
 
+uint16_t CPU::getPC() {
+	return PC;
+}
 
 void CPU::RET() {
 	PC = stack[SP];
@@ -134,13 +137,13 @@ void CPU::LD_Vx_DT(unsigned char regIndex)
 	Vx[regIndex] = DT;
 	incPC();
 }
-
+/*
 void CPU::LD_DT_Vx(unsigned char regIndex)
 {
 	DT = Vx[regIndex];
 	incPC();
 }
-
+*/
 void CPU::LD_ST_Vx(unsigned char regIndex)
 {
 	ST = Vx[regIndex];
