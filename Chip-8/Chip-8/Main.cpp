@@ -4,12 +4,14 @@
 #include <iostream>
 #include "Chip8.h"
 
-int main()
+int main(int argc, char* argv[])
 {
     std::cout << "Hello World!\n";
     Chip8 m_chip8;
 
     m_chip8.init("Luis", 100, 100);
+
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -1,5 +1,13 @@
 #include "Renderer.h"
 
+Renderer::Renderer()
+{
+}
+
+Renderer::~Renderer()
+{
+}
+
 bool Renderer::init(string windowName, int width, int height)
 {
 

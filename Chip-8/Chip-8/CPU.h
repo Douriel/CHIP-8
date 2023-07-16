@@ -14,13 +14,13 @@ public:
 	uint16_t getPC();
 
 	//Methods I am not sure if I should implement here:
-	void SYS_addr();
-	void CLS();
-	void DRW_Vx_Vy_nibble();
-	void SKP_Vx();
-	void SKNP_Vx();
-	void LD_Vx_K();
-	
+	//void SYS_addr();
+	//void CLS();
+	//void DRW_Vx_Vy_nibble();
+	//void SKP_Vx();
+	//void SKNP_Vx();
+	//void LD_Vx_K();
+	//
 
 	//Methods
 	void RET();
@@ -45,7 +45,7 @@ public:
 	void JP_V0_addr(uint16_t instruction);
 	void RND_Vx_byte(unsigned char regIndex, uint8_t kk);
 	void LD_Vx_DT(unsigned char regIndex);
-	void LD_DT_Vx(unsigned char regIndex);
+//	void LD_DT_Vx(unsigned char regIndex);
 //	void LD_DT_Vx(unsigned char regIndex);
 	void LD_ST_Vx(unsigned char regIndex);
 	void ADD_I_Vx(unsigned char regIndex);

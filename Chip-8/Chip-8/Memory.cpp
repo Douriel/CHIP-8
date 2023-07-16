@@ -113,6 +113,10 @@ Memory::Memory() {
 	RAM[idx++] = 0x80;
 }
 
+Memory::~Memory()
+{
+}
+
 void Memory::write(std::uint16_t address, std::uint8_t value) {
 	RAM[address] = value;
 }

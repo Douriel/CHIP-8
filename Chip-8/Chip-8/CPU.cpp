@@ -128,7 +128,7 @@ void CPU::JP_V0_addr(uint16_t instruction)
 
 void CPU::RND_Vx_byte(unsigned char regIndex, uint8_t kk)
 {
-	Vx[regIndex] = dis(gen) & kk;
+	Vx[regIndex] = (rand()% 255) & kk;
 	incPC();
 }
 
