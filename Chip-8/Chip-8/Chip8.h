@@ -11,7 +11,7 @@ public:
 
 	void init(string gameName, int width, int height);
 	void decodeNext();
-	//void update();
+	void update();
 
 
 private:

@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 
     m_chip8.init("PONG", 100, 100);
 
-    m_chip8.decodeNext();
+    m_chip8.update();
 
     return 0;
 }

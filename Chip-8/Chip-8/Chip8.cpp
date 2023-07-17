@@ -28,11 +28,13 @@ void Chip8::init(string gameName, int width, int height) {
 }
 
 void Chip8::decodeNext() {
-	unsigned char instruction = m_memory.read(m_cpu->getPC());
+	unsigned short instruction = m_memory.read(m_cpu->getPC());
+
+	std::cout << std::hex << (int)instruction << endl;
+
 	instruction = (instruction << 8) | m_memory.read(m_cpu->getPC()+1);
 
-
-	std::cout << std::hex << (int)instruction;
+	std::cout << std::hex << (int)instruction << endl;
 	
 	unsigned char firstDigit = (instruction & 0xF000) >> 12;
 	unsigned char secondDigit = (instruction & 0x0F00) >> 8;
@@ -43,8 +45,7 @@ void Chip8::decodeNext() {
 	uint_least16_t secondAndThirdAndFourthDigit = (instruction & 0x0FFF);
 
 
-
-	std::cout << std::hex << (int)firstDigit;
+	std::cout << std::hex << (int)firstDigit << endl;
 
 
 	switch (firstDigit)
@@ -53,10 +54,13 @@ void Chip8::decodeNext() {
 		switch (thirdAndFourthDigit)
 		{
 		case 0xE0:
+			m_cpu->CLS(m_renderer);
 			break;
 		case 0xEE:
+			m_cpu->RET();
 			break;
 		default:
+			cout << "0x0??? error instruction" << endl;
 			break;
 		}
 		break;
@@ -154,31 +158,41 @@ void Chip8::decodeNext() {
 			cout << "0xFx0ANot implemented" << endl;
 			break;
 		case 0x15:
-			cout << "0xFx15 Not implemented" << endl;
+			m_cpu->LD_DT_Vx(secondDigit);
 			break;
 		case 0x18:
-			
+			m_cpu->LD_ST_Vx(secondDigit);
 			break;
 		case 0x1E:
+			m_cpu->ADD_I_Vx(secondDigit);
 			break;
 		case 0x29:
+			m_cpu->LD_F_Vx(secondDigit);
 			break;
 		case 0x33:
+			m_cpu->LD_B_Vx(secondDigit);
 			break;
 		case 0x55:
+			m_cpu->LD_I_Vx(secondDigit);
 			break;
 		case 0x65:
+			m_cpu->LD_Vx_I(secondDigit);
 			break;
 		default:
 			cout << "0xF??? unkown." << endl;
 			break;
 		}
 		break;
-
-
-
 	default:
-		cout << "Instruction not implemented" << endl;
+		cout << "Error reading the instruction." << endl;
 		break;
+	}
+}
+
+void Chip8::update()
+{
+	while (true)
+	{
+		decodeNext();
 	}
 }

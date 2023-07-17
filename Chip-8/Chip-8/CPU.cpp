@@ -9,6 +9,12 @@ uint16_t CPU::getPC() {
 	return PC;
 }
 
+// Should I send a pointer?
+void CPU::CLS(Renderer &m_renderer)
+{
+	m_renderer.clear();
+}
+
 void CPU::RET() {
 	PC = stack[SP];
 	SP--;
@@ -137,13 +143,13 @@ void CPU::LD_Vx_DT(unsigned char regIndex)
 	Vx[regIndex] = DT;
 	incPC();
 }
-/*
+
 void CPU::LD_DT_Vx(unsigned char regIndex)
 {
 	DT = Vx[regIndex];
 	incPC();
 }
-*/
+
 void CPU::LD_ST_Vx(unsigned char regIndex)
 {
 	ST = Vx[regIndex];
