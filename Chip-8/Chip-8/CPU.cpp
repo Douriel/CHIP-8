@@ -9,6 +9,16 @@ uint16_t CPU::getPC() {
 	return PC;
 }
 
+void CPU::DRW_Vx_Vy_nibble(unsigned char regIndex, unsigned char regIndexJ, uint8_t n, Renderer &m_renderer)
+{
+
+	for (int i = 0; i < n; i++) {
+		m_memory->read(I);
+		//SDL_RenderDrawPoint(m_renderer, regIndex, regIndexJ)
+		I++, i++;
+	}
+}
+
 // Should I send a pointer?
 void CPU::CLS(Renderer &m_renderer)
 {
