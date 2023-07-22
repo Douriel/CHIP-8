@@ -9,7 +9,7 @@ public:
 	Renderer();
 	~Renderer();
 	bool init(string windowName, int width, int height);
-	void update();
+	void update(uint32_t video[]);
 	void render();
 	void clear();
 	void stop();

@@ -22,5 +22,7 @@ private:
 	CPU		   *m_cpu;
 	Memory		m_memory;
 	Renderer	m_renderer;
+	uint32_t    video[64 * 32]{};
+	uint32_t* videoPointer = video;
 };
 

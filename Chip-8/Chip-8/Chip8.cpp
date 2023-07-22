@@ -54,7 +54,7 @@ void Chip8::decodeNext() {
 		switch (thirdAndFourthDigit)
 		{
 		case 0xE0:
-			m_cpu->CLS(m_renderer);
+			m_cpu->CLS(videoPointer);
 			break;
 		case 0xEE:
 			m_cpu->RET();
@@ -132,7 +132,7 @@ void Chip8::decodeNext() {
 		m_cpu->RND_Vx_byte(secondDigit, thirdAndFourthDigit);
 		break;
 	case 0xD:
-		cout << "0xD not implemented" << endl;
+		m_cpu->DRW_Vx_Vy_nibble(secondDigit, thirdDigit, fouthDigit, videoPointer);
 		break;
 	case 0xE:
 		switch (thirdAndFourthDigit)
@@ -194,5 +194,7 @@ void Chip8::update()
 	while (true)
 	{
 		decodeNext();
+		m_renderer.update(video);
+		m_renderer.render();
 	}
 }

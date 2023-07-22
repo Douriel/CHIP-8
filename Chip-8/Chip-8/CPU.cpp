@@ -9,20 +9,42 @@ uint16_t CPU::getPC() {
 	return PC;
 }
 
-void CPU::DRW_Vx_Vy_nibble(unsigned char regIndex, unsigned char regIndexJ, uint8_t n, Renderer &m_renderer)
+void CPU::DRW_Vx_Vy_nibble(unsigned char regIndex, unsigned char regIndexJ, uint8_t n, uint32_t video[])
 {
+	// Wrap if going beyond screen boundaries
+	uint8_t cordx = Vx[regIndex] % 32;
+	uint8_t cordy = Vx[regIndexJ] % 64;
 
-	for (int i = 0; i < n; i++) {
-		m_memory->read(I);
-		//SDL_RenderDrawPoint(m_renderer, regIndex, regIndexJ)
-		I++, i++;
+
+	for (int row = 0; row < n; row++) {
+		uint8_t sprinteByte = m_memory->read(I + row);
+		for (int col = 0; col < 8; col++) {
+			uint8_t spritePixel = (sprinteByte >> (8 - col)) & 1;
+			uint32_t* screenPixel = &video[32 * (cordy + row) + (cordx + col)];
+
+			// Sprite pixel is on
+			if (spritePixel) {
+				// Screen pixel also on - collision
+				
+				if (*screenPixel == 0xFFFFFFFF)
+				{
+					Vx[VF] = 1;
+				}
+
+				// Effectively XOR with the sprite pixel
+				*screenPixel ^= 0xFFFFFFFF;
+			}
+		}
 	}
 }
 
 // Should I send a pointer?
-void CPU::CLS(Renderer &m_renderer)
+// I am going to create a new variable called Video, this variable is going to containg the whole pixels;
+void CPU::CLS(uint32_t *video)
 {
-	m_renderer.clear();
+	for (int i = 0; i < 32 * 64; i++) {
+		video[i] = 0;
+	}
 }
 
 void CPU::RET() {

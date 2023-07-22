@@ -17,7 +17,7 @@ public:
 	//Methods I am not sure if I should implement here:
 	//void SYS_addr();
 
-	void DRW_Vx_Vy_nibble(unsigned char regIndex, unsigned char regIndexJ, uint8_t k, Renderer &m_renderer);
+	void DRW_Vx_Vy_nibble(unsigned char regIndex, unsigned char regIndexJ, uint8_t k, uint32_t video[]);
 	//void SKP_Vx();
 	//void SKNP_Vx();
 	//void LD_Vx_K();
@@ -25,7 +25,7 @@ public:
 
 	//Methods
 
-	void CLS(Renderer &m_renderer);
+	void CLS(uint32_t *video);
 	void RET();
 	void JP_addr(uint16_t location);
 	void CALL_addr(uint16_t instruction);

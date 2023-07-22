@@ -57,7 +57,7 @@ void Renderer::stop()
 	SDL_Quit();
 }
 
-void Renderer::update()
+void Renderer::update(uint32_t video[])
 {
 	for (int i = 0; i < 64; i++) {
 		for (int j = 0; j < 32; j++) {
@@ -77,5 +77,5 @@ void Renderer::update()
 
 		idx += 3;
 	}
-	SDL_UpdateTexture(m_sdlTexture, NULL, pixels_rgb, 64 * 3 * sizeof(unsigned char));
+	SDL_UpdateTexture(m_sdlTexture, NULL, video, 32 * sizeof(video[0]));
 }
