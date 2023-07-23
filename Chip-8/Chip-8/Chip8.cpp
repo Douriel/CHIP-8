@@ -138,10 +138,10 @@ void Chip8::decodeNext() {
 		switch (thirdAndFourthDigit)
 		{
 		case 0x9E:
-			cout << "0xEx9E not implemented" << endl;
+			m_cpu->SKP_Vx(m_keyboard, secondDigit);
 			break;
 		case 0xA1:
-			cout << "0xExA1 not implemented" << endl;
+			m_cpu->SKNP_Vx(m_keyboard, secondDigit);
 			break;
 		default:
 			cout << "0xE??? unkown." << endl;
@@ -155,7 +155,7 @@ void Chip8::decodeNext() {
 			m_cpu->LD_Vx_DT(secondDigit);
 			break;
 		case 0x0A:
-			cout << "0xFx0ANot implemented" << endl;
+			m_cpu->LD_Vx_K(m_keyboard ,secondDigit);
 			break;
 		case 0x15:
 			m_cpu->LD_DT_Vx(secondDigit);
@@ -194,7 +194,10 @@ void Chip8::update()
 	while (true)
 	{
 		decodeNext();
+		m_cpu->incDT();
+		m_cpu->incPC();
 		m_renderer.update(video);
 		m_renderer.render();
+		
 	}
 }

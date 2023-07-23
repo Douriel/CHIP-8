@@ -1,6 +1,7 @@
 #pragma once
 #include "CPU.h"
 #include "Renderer.h"
+#include "KeyBoard.h"
 
 
 class Chip8
@@ -22,6 +23,7 @@ private:
 	CPU		   *m_cpu;
 	Memory		m_memory;
 	Renderer	m_renderer;
+	KeyBoard    m_keyboard;
 	uint32_t    video[64 * 32]{};
 	uint32_t* videoPointer = video;
 };

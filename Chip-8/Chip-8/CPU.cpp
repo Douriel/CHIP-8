@@ -38,6 +38,27 @@ void CPU::DRW_Vx_Vy_nibble(unsigned char regIndex, unsigned char regIndexJ, uint
 	}
 }
 
+void CPU::SKP_Vx(KeyBoard g_keyboard, unsigned char regIndex)
+{
+	unsigned char key = Vx[regIndex];
+	if (g_keyboard.isKeyPressed(key))PC += 2;
+}
+
+void CPU::SKNP_Vx(KeyBoard g_keyboard, unsigned char regIndex)
+{
+	unsigned char key = Vx[regIndex];
+	if (!g_keyboard.isKeyPressed(key))PC += 2;
+}
+
+void CPU::LD_Vx_K(KeyBoard g_keyboard, unsigned char regIndex)
+{
+	//while (true)
+	//{
+
+	//}
+}
+
+
 // Should I send a pointer?
 // I am going to create a new variable called Video, this variable is going to containg the whole pixels;
 void CPU::CLS(uint32_t *video)
@@ -230,4 +251,14 @@ void CPU::LD_Vx_I(unsigned char regIndex)
 		Vx[i] = m_memory->read(I + 1);
 	}
 	incPC();
+}
+
+void CPU::incDT()
+{
+	if (DT > 0) { DT--; }
+}
+
+void CPU::incST()
+{
+	if (ST > 0) { ST--; }
 }

@@ -12,9 +12,9 @@ public:
 	void update(uint32_t video[]);
 	void render();
 	void clear();
-	void stop();
+//	void stop();
 
-	unsigned char* getPixels() { return m_pixels; }
+//	unsigned char* getPixels() { return m_pixels; }
 
 private:
 

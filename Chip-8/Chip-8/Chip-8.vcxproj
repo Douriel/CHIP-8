@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Chip8.cpp" />
+    <ClCompile Include="KeyBoard.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="CPU.cpp" />
     <ClCompile Include="Memory.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Common.h" />
     <ClInclude Include="CPU.h" />
     <ClInclude Include="Instructions.h" />
+    <ClInclude Include="KeyBoard.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />

@@ -2,6 +2,7 @@
 #include "Common.h"
 #include "Memory.h"
 #include "Renderer.h"
+#include "KeyBoard.h"
 
 
 class CPU
@@ -17,10 +18,11 @@ public:
 	//Methods I am not sure if I should implement here:
 	//void SYS_addr();
 
+	// there are many chances this will break on these methods.
 	void DRW_Vx_Vy_nibble(unsigned char regIndex, unsigned char regIndexJ, uint8_t k, uint32_t video[]);
-	//void SKP_Vx();
-	//void SKNP_Vx();
-	//void LD_Vx_K();
+	void SKP_Vx(KeyBoard g_keyboard, unsigned char regIndex);
+	void SKNP_Vx(KeyBoard g_keyboard, unsigned char regIndex);
+	void LD_Vx_K(KeyBoard g_keyboard, unsigned char regIndex);
 
 
 	//Methods
@@ -55,6 +57,10 @@ public:
 	void LD_B_Vx(unsigned char regIndex);  
 	void LD_I_Vx(unsigned char regIndex);
 	void LD_Vx_I(unsigned char regIndex);
+
+	// increase delay and sound timer
+	void incDT();
+	void incST();
 
 private:
 	std::uint16_t PC = 512;

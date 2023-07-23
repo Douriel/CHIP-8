@@ -6,6 +6,14 @@ Renderer::Renderer()
 
 Renderer::~Renderer()
 {
+	// destroy renderer
+	SDL_DestroyRenderer(m_renderer);
+
+	// destroy window
+	SDL_DestroyWindow(m_window);
+
+	// close SDL
+	SDL_Quit();
 }
 
 bool Renderer::init(string windowName, int width, int height)
@@ -45,37 +53,30 @@ void Renderer::clear() {
     SDL_RenderClear(m_renderer);
 }
 
-void Renderer::stop()
-{
-	// destroy renderer
-	SDL_DestroyRenderer(m_renderer);
-
-	// destroy window
-	SDL_DestroyWindow(m_window);
-
-	// close SDL
-	SDL_Quit();
-}
+//void Renderer::stop()
+//{
+//
+//}
 
 void Renderer::update(uint32_t video[])
 {
 	for (int i = 0; i < 64; i++) {
 		for (int j = 0; j < 32; j++) {
-			cout << +m_pixels[j + i * 32];
+			cout << video[j + i];
 		}
 		cout << "\n";
 	}
 
-	unsigned char pixels_rgb[64 * 32 * 3];
+	//unsigned char pixels_rgb[64 * 32 * 3];
 
-	int idx = 0;
-	for (int i = 0; i < (64 * 32); i++) {
-		unsigned char aux = m_pixels[i];
-		pixels_rgb[idx] = aux * 0xFF;
-		pixels_rgb[idx + 1] = aux * 0xFF;
-		pixels_rgb[idx + 2] = aux * 0xFF;
+	//int idx = 0;
+	//for (int i = 0; i < (64 * 32); i++) {
+	//	unsigned char aux = m_pixels[i];
+	//	pixels_rgb[idx] = aux * 0xFF;
+	//	pixels_rgb[idx + 1] = aux * 0xFF;
+	//	pixels_rgb[idx + 2] = aux * 0xFF;
 
-		idx += 3;
-	}
+	//	idx += 3;
+	//}
 	SDL_UpdateTexture(m_sdlTexture, NULL, video, 32 * sizeof(video[0]));
 }
