@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
     std::cout << "Hello World!\n";
     Chip8 m_chip8;
 
-    m_chip8.init("PONG", 100, 100);
+    m_chip8.init("TEST", 100, 100);
 
     m_chip8.update();
 

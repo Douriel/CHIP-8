@@ -30,8 +30,6 @@ void Chip8::init(string gameName, int width, int height) {
 void Chip8::decodeNext() {
 	unsigned short instruction = m_memory.read(m_cpu->getPC());
 
-	std::cout << std::hex << (int)instruction << endl;
-
 	instruction = (instruction << 8) | m_memory.read(m_cpu->getPC()+1);
 
 	std::cout << std::hex << (int)instruction << endl;
@@ -43,9 +41,6 @@ void Chip8::decodeNext() {
 	unsigned char secondAndThirdDigit = (instruction & 0x0FF0) >> 4;
 	unsigned char thirdAndFourthDigit = (instruction & 0x00FF);
 	uint_least16_t secondAndThirdAndFourthDigit = (instruction & 0x0FFF);
-
-
-	std::cout << std::hex << (int)firstDigit << endl;
 
 
 	switch (firstDigit)

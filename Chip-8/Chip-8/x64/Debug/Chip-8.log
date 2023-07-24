@@ -1,5 +1,2 @@
-﻿  CPU.cpp
-C:\Users\shak_\CHIP-8\Chip-8\Chip-8\CPU.cpp(196,17): warning C4244: '=': conversion from 'uint16_t' to 'uint8_t', possible loss of data
-  Chip8.cpp
-  Generating Code...
+﻿  Main.cpp
   Chip-8.vcxproj -> C:\Users\shak_\CHIP-8\Chip-8\x64\Debug\Chip-8.exe

@@ -35,7 +35,7 @@ bool Renderer::init(string windowName, int width, int height)
 	m_renderer = SDL_CreateRenderer(m_window, -1, 0);
 	SDL_RenderSetLogicalSize(m_renderer, width, height);
 
-	m_sdlTexture = SDL_CreateTexture(m_renderer, SDL_PIXELFORMAT_RGB24, SDL_TEXTUREACCESS_STREAMING, 64, 32);
+	m_sdlTexture = SDL_CreateTexture(m_renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 64, 32);
 
 	SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
 

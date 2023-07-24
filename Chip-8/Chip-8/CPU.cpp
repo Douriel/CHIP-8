@@ -1,4 +1,5 @@
 #include "CPU.h"
+#include <bitset>
 
 
 CPU::CPU(Memory* memory) {
@@ -17,11 +18,23 @@ void CPU::DRW_Vx_Vy_nibble(unsigned char regIndex, unsigned char regIndexJ, uint
 
 
 	for (int row = 0; row < n; row++) {
-		uint8_t sprinteByte = m_memory->read(I + row);
-		for (int col = 0; col < 8; col++) {
-			uint8_t spritePixel = (sprinteByte >> (8 - col)) & 1;
-			uint32_t* screenPixel = &video[32 * (cordy + row) + (cordx + col)];
+		uint8_t spriteByte = m_memory->read(I + row);
+		std::bitset<8> x(spriteByte);
+		std::cout << "SpriteByte: " << x << endl;
 
+		for (int col = 0; col < 8; col++) {
+			uint8_t spritePixel = (spriteByte >> (7 - col)) & 0x1;
+			
+			uint8_t x = (cordx + col) % 32;
+			uint8_t y = (cordy + row) % 64;
+
+			std::cout << std::dec << "cordenada x: " << (int)x << endl;
+			std::cout << "cordenada y: " << (int)y << endl;
+
+			uint32_t* screenPixel = &video[32 * y + x];
+			std::cout << "Cordenadas de pixel: " << 32 * y + x << endl;
+			
+			std::cout << *screenPixel << endl;
 			// Sprite pixel is on
 			if (spritePixel) {
 				// Screen pixel also on - collision
